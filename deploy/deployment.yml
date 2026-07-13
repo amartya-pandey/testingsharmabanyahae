@@ -1,0 +1,25 @@
+# Deployment config for Orders API
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-orders
+  labels:
+    app: api-orders
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api-orders
+  template:
+    metadata:
+      labels:
+        app: api-orders
+    spec:
+      containers:
+        - name: api-orders
+          image: registry.aiproff.in/platform:initial-tag-v0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SERVICE_NAME
+              value: "api-orders"
