@@ -1,0 +1,41 @@
+registry: "registry.aiproff.in/platform"
+image_field_path: "spec.template.spec.containers[0].image"
+
+targets:
+  - branch: "api-users"
+    file: "deploy/deployment.yml"
+    description: "User Management API"
+  - branch: "api-auth"
+    file: "deploy/deployment.yml"
+    description: "Authentication API"
+  - branch: "api-orders"
+    file: "deploy/deployment.yml"
+    description: "Orders API"
+  - branch: "api-payments"
+    file: "deploy/deployment.yml"
+    description: "Payments API"
+  - branch: "api-notifications"
+    file: "deploy/deployment.yml"
+    description: "Notifications API"
+  - branch: "api-inventory"
+    file: "deploy/deployment.yml"
+    description: "Inventory API"
+  - branch: "api-reports"
+    file: "deploy/deployment.yml"
+    description: "Reports API"
+  - branch: "api-gateway"
+    file: "deploy/deployment.yml"
+    description: "API Gateway"
+
+settings:
+  pr_title_template: "chore: update image tag to {new_tag}"
+  pr_body_template: |
+    ## Automated Image Tag Update
+    **New Tag:** `{new_tag}`
+    **Previous Tag:** `{old_tag}`
+    **Triggered by:** {triggered_by}
+  feature_branch_template: "auto/image-tag-{branch}-{new_tag}"
+  pr_labels:
+    - "automation"
+    - "image-update"
+  auto_merge: false
