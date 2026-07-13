@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: api-gateway
-          image: registry.aiproff.in/platform:initial-tag-v0
+          image: registry.aiproff.in/platform:v1.0.0
           ports:
             - containerPort: 8080
           env:
