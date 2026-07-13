@@ -1,0 +1,25 @@
+# Deployment config for Notifications API
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-notifications
+  labels:
+    app: api-notifications
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api-notifications
+  template:
+    metadata:
+      labels:
+        app: api-notifications
+    spec:
+      containers:
+        - name: api-notifications
+          image: registry.aiproff.in/platform:initial-tag-v0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SERVICE_NAME
+              value: "api-notifications"
