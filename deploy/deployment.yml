@@ -1,0 +1,25 @@
+# Deployment config for Inventory API
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-inventory
+  labels:
+    app: api-inventory
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api-inventory
+  template:
+    metadata:
+      labels:
+        app: api-inventory
+    spec:
+      containers:
+        - name: api-inventory
+          image: registry.aiproff.in/platform:initial-tag-v0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SERVICE_NAME
+              value: "api-inventory"
